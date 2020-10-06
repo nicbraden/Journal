@@ -24,8 +24,8 @@ class NotesList extends Component {
             <Container>
                 <ListGroup>
                     <TransitionGroup className="noteList">
-                        { notes.map(({ id, title, mood, note }) => (
-                            <CSSTransition key={id} timeout={500} classNames="fade">
+                        { notes.map(({ _id, title, mood, note }) => (
+                            <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                     <CardTitle>{title }</CardTitle>
                                     <CardSubtitle>
@@ -37,7 +37,7 @@ class NotesList extends Component {
                                     <Button className="remove-btn"
                                     color="danger"
                                     size="sm"
-                                    onClick={ this.onDeleteClick.bind(this, id)}>
+                                    onClick={ this.onDeleteClick.bind(this, _id)}>
                                     &times;
                                     </Button>
                                 </ListGroupItem>
