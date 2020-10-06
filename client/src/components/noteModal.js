@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Button, 
+    Button,
     Modal,
     ModalHeader,
     ModalBody,
@@ -11,14 +11,13 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addNote } from '../actions/noteActions';
-import {v1 as uuid} from "uuid";
 
 class NoteModal extends Component {
     state = {
         modal: false,
         title: '',
         mood: '',
-        note: ''
+        note: '',
     }
 
     toggle = () => {
@@ -33,10 +32,8 @@ class NoteModal extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        alert("You are submitting " + this.state.title);
 
         const newNote = {
-            id: uuid(),
             title: this.state.title,
             mood: this.state.mood,
             note: this.state.note
@@ -48,51 +45,52 @@ class NoteModal extends Component {
     }
 
     render() {
-        return(
+        return (
             <div>
                 <Button
-                color="dark"
-                style={{marginBottom: '2rem'}}
-                onClick={ this.toggle }>
+                    color="dark"
+                    style={{ marginBottom: '2rem' }}
+                    onClick={this.toggle}>
                     New Note
                 </Button>
 
                 <Modal
-                isOpen={ this.state.modal }
-                toggle={ this.toggle }>
-                    <ModalHeader toggle={ this.toggle }> Create New Note</ModalHeader>
+                    isOpen={this.state.modal}
+                    toggle={this.toggle}>
+                    <ModalHeader toggle={this.toggle}> Create New Note</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={ this.onSubmit }>
+                        <Form onSubmit={this.onSubmit}>
                             <FormGroup>
                                 <Label for="note">Title</Label>
-                                <Input 
-                                type="text"
-                                name="title"
-                                id="title"
-                                placeholder="Title"
-                                onChange={ this.onChange }
+                                <Input
+                                    type="text"
+                                    name="title"
+                                    id="title"
+                                    placeholder="Title"
+                                    onChange={this.onChange}
                                 />
-                                <Label for="note">Mood</Label>
-                                <Input 
-                                type="text"
-                                name="mood"
-                                id="mood"
-                                placeholder="Happy, Sad, Angry"
-                                onChange={ this.onChange }
-                                />
+                                <Label for="testmood">Mood</Label>
+                                <Input type="select" name="mood" id="mood" value={this.state.value} onChange={this.onChange}>
+                                    <option value="Happy">Happy</option>
+                                    <option value="Sad">Sad</option>
+                                    <option value="Disgusted">Disgusted</option>
+                                    <option value="Surprised">Surprised</option>
+                                    <option value="Angry">Angry</option>
+                                    <option value="Bad">Bad</option>
+                                    <option value="Fearful">Fearful</option>
+                                </Input>
                                 <Label for="note">Note</Label>
                                 <Input
-                                type="textarea"
-                                name="note"
-                                id="note"
-                                placeholder="Entry"
-                                onChange={ this.onChange }
+                                    type="textarea"
+                                    name="note"
+                                    id="note"
+                                    placeholder="Entry"
+                                    onChange={this.onChange}
                                 />
-
                                 <Button
-                                color="dark"
-                                style={{marginTop: "2rem"}}
-                                block>
+                                    color="dark"
+                                    style={{ marginTop: "2rem" }}
+                                    block>
                                     Submit Note
                                 </Button>
                             </FormGroup>
